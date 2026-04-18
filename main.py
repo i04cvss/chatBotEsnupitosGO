@@ -3,7 +3,7 @@ from openai import OpenAI
 
 print("ARCHIVO EJECUTÁNDOSE")
 # api
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="TU_API_KEY_AQUI")
 
 
 # datos
