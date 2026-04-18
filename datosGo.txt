@@ -1,0 +1,42 @@
+Esnupitos GO es un emprendimiento dedicado a la importación de productos de origen asiático hacia Chile, principalmente artículos K-POP como photocards, álbumes y merch.
+
+FUNCIONAMIENTO DEL SERVICIO:
+El proceso consiste en:
+1. El cliente solicita un producto.
+2. Se realiza la compra al proveedor en Asia.
+3. El producto se envía a una casilla en el país de origen.
+4. Luego se envía a Chile.
+5. Se paga envío internacional y posibles costos de aduana.
+
+ESTADO DE LOS PEDIDOS:
+Los pedidos pueden encontrarse en los siguientes estados:
+- Comprado: el producto fue adquirido al proveedor.
+- En tránsito en país de origen: el producto va hacia la casilla.
+- En bodega: el producto ya llegó a la casilla.
+- En tránsito a Chile: el pedido viene en camino internacional.
+- En Chile: el pedido llegó al país.
+- Entregado: el cliente ya recibió su producto.
+
+TIEMPOS DE ENTREGA:
+El tiempo estimado de entrega es entre 15 a 30 días, dependiendo del proveedor y del envío internacional.
+
+COSTOS DE ENVÍO:
+El costo de envío depende del peso del producto:
+- Photocards: aproximadamente 0.1 kg
+- Álbumes: entre 0.5 kg y 1 kg
+- Merch: variable según tamaño
+
+El costo final incluye:
+- Precio del producto
+- Envío interno en Asia
+- Envío internacional
+- Aduanas (si aplica)
+
+PREGUNTAS FRECUENTES:
+- Los pedidos no son inmediatos, ya que son importados.
+- No se realizan devoluciones una vez hecha la compra.
+- Los tiempos pueden variar por retrasos logísticos.
+- Siempre se informa el estado del pedido al cliente.
+
+IMPORTANTE:
+El sistema solo entrega información general y estimaciones. Para información exacta, se debe revisar el pedido específico.
