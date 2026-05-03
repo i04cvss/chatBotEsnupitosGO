@@ -1,96 +1,78 @@
+from langchain_openai import ChatOpenAI
+from langchain_classic.agents import initialize_agent, Tool, AgentType
+from langchain_classic.memory import ConversationBufferMemory
+
+from tools import estado, costos, faq
+
 import os
-from openai import OpenAI
-
-print("ARCHIVO EJECUTÁNDOSE")
-# api
-client = OpenAI(api_key="TU_API_KEY_AQUI")
 
 
-# datos
-def cargar_datos():
-    try:
-        with open("datosGo.txt", "r", encoding="utf-8") as f:
-            return f.read()
-    except FileNotFoundError:
-        return "No hay información disponible."
+# LLM
+llm = ChatOpenAI(
+    model="openai/gpt-4o-mini1",
+    temperature=0,
+    base_url="https://models.github.ai/inference",
+    openai_api_key=os.environ.get("GITHUB_TOKEN")
+)
 
-# rag
-def generar_respuesta(datos, pregunta, opcion):
+memory = ConversationBufferMemory(memory_key="chat_history")
 
-    prompt = f"""
-Eres un asistente virtual del emprendimiento Esnupitos GO.
+# TOOLS
+tools = [
+    Tool(
+        name="EstadoPedido",
+        func=estado,
+        description="Obtiene el estado de un pedido usando su ID"
+    ),
+    Tool(
+        name="CostoEnvio",
+        func=costos,
+        description="Obtiene costos de envío y aduana según categoría"
+    ),
+    Tool(
+        name="FAQ",
+        func=faq,
+        description="Responde preguntas frecuentes"
+    )
+]
 
-Tu función es responder consultas de clientes basándote únicamente en la información entregada en el contexto.
+# AGENTE
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    memory=memory,
+    verbose=True
+)
 
-El usuario seleccionará una opción del sistema, y debes limitar tu respuesta SOLO a esa categoría.
-
-Opciones disponibles:
-- Estado de pedido
-- Costos de envío
-- Tiempos de entrega
-- Preguntas frecuentes
-
-Instrucciones:
-- Responde únicamente en función de la opción seleccionada.
-- No mezcles información de otras categorías.
-- No inventes información.
-- Usa solo el contexto proporcionado.
-- Mantén un lenguaje claro, breve y amigable.
-- Si no existe información suficiente en el contexto, responde: "No dispongo de esa información en este momento."
-
-Datos de entrada:
-Opción seleccionada: {opcion}
-Pregunta del cliente: {pregunta}
-
-Contexto:
-{datos}
-"""
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        return response.choices[0].message.content
-
-    except:
-        return "No se pudo generar respuesta en este momento."
-
-# menu
 def mostrar_menu():
-    
-    print("\n=== Esnupitos GO Chatbot ===")
+    print("\n=== Esnupitos GO ===")
     print("1. Estado de pedido")
     print("2. Costos de envío")
-    print("3. Tiempos de entrega")
-    print("4. Pregunta libre")
+    print("3. Preguntas frecuentes")
+    print("4. Salir")
 
-# respuesta
 def main():
-    print("ENTRÓ AL MAIN")
-    datos = cargar_datos()
-    mostrar_menu()
 
-    opcion = input("Elige una opción: ")
+    while True:
+        mostrar_menu()
+        opcion = input("Selecciona una opción: ")
 
-    if opcion == "1":
-        pedido = input("Ingresa tu número de pedido: ")
-        pregunta = f"¿Cuál es el estado del pedido {pedido}?"
+        if opcion == "4":
+            break
 
-    elif opcion == "2":
-        peso = input("¿Cuánto pesa el producto? ")
-        pregunta = f"¿Cuál es el costo de envío para un producto de {peso} gramos?"
+        if opcion == "1":
+            pedido = input("Ingresa nombre del pedido: ")
+            pregunta = f"¿Cuál es el estado del pedido {pedido}?"
 
-    elif opcion == "3":
-        pregunta = "¿Cuáles son los tiempos de entrega?"
+        elif opcion == "2":
+            categoria = input("Categoría: ")
+            pregunta = f"¿Cuál es el costo de envío para {categoria}?"
 
-    else:
-        pregunta = input("Escribe tu pregunta: ")
+        respuesta = agent.run(pregunta)
 
-    respuesta = generar_respuesta(datos, pregunta, opcion)
-    print("\nRespuesta:")
-    print(respuesta)
+        print("\nRespuesta:")
+        print(respuesta)
 
-# ejecutar
 if __name__ == "__main__":
     main()
