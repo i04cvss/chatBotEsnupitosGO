@@ -1,97 +1,141 @@
-# 🤖 Esnupitos GO Chatbot
-
-## 📌 Descripción
-
-Este proyecto consiste en el desarrollo de un chatbot inteligente basado en modelos de lenguaje (LLM) y técnicas de recuperación aumentada (RAG), aplicado al emprendimiento **Esnupitos GO**, dedicado a la importación de productos K-POP desde Asia hacia Chile.
-
-El sistema permite responder automáticamente consultas frecuentes de clientes, mejorando la eficiencia operativa y reduciendo los tiempos de respuesta.
+# 🤖 Esnupitos GO Agent
 
 ---
 
-## 🎯 Objetivo
+# 📌 Descripción
 
-Automatizar la atención de clientes mediante un asistente virtual capaz de:
+Este proyecto consiste en el desarrollo de un agente inteligente basado en modelos de lenguaje (LLM), arquitectura RAG y el framework LangChain, aplicado al emprendimiento Esnupitos GO, dedicado a la importación de productos K-POP desde Asia hacia Chile.
 
-* Responder preguntas frecuentes
-* Informar estados de pedidos
-* Entregar estimaciones de costos
-* Indicar tiempos de entrega
+El sistema permite automatizar consultas frecuentes de clientes mediante herramientas conectadas a una base de datos MySQL, mejorando la eficiencia operativa y reduciendo tiempos de respuesta.
 
 ---
 
-## 🧠 Tecnologías utilizadas
+# 🎯 Objetivo
 
-* Python
-* OpenAI API
-* Modelo LLM (GPT-4o-mini)
-* Enfoque RAG (Retrieval-Augmented Generation)
+Automatizar la atención de clientes mediante un agente capaz de:
 
----
-
-## ⚙️ Funcionamiento
-
-El sistema funciona mediante:
-
-1. Selección de una opción por parte del usuario
-2. Generación de una consulta estructurada
-3. Uso de un contexto interno (`datosGo.txt`)
-4. Envío del prompt al modelo LLM
-5. Generación de respuesta basada en contexto (RAG)
+- Consultar estados de pedidos.
+- Entregar costos de envío y aduana.
+- Responder preguntas frecuentes.
+- Mantener contexto conversacional durante la interacción.
 
 ---
 
-## 📂 Estructura del proyecto
+# 🧠 Tecnologías utilizadas
 
-* `main.py`: lógica principal del chatbot
-* `datosGo.txt`: base de conocimiento del sistema
-* `venv/`: entorno virtual (no incluido en repositorio)
+- Python  
+- LangChain  
+- MySQL  
+- GPT-4o-mini  
+- GitHub Models  
+- Arquitectura RAG  
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+# ⚙️ Funcionamiento
 
-1. Clonar repositorio:
+El sistema funciona mediante las siguientes etapas:
 
+1. El usuario selecciona una opción del menú.
+
+2. El agente interpreta la consulta realizada.
+
+3. Se selecciona automáticamente la herramienta adecuada.
+
+4. El sistema consulta información en MySQL.
+
+5. La memoria conversacional mantiene el contexto.
+
+6. El modelo genera una respuesta basada en los datos recuperados.
+
+---
+
+# 📂 Estructura del proyecto
+
+```text
+chatBotGO/
+
+├── main.py
+├── tools.py
+├── db.py
+├── esnupitosgo.sql
+├── requirements.txt
+└── README.md
 ```
+
+---
+
+# 🚀 Cómo ejecutar el proyecto
+
+## 1️⃣ Clonar repositorio
+
+```bash
 git clone <url-del-repo>
+
 cd chatBotGO
 ```
 
-2. Crear entorno virtual:
+---
 
-```
+## 2️⃣ Crear entorno virtual
+
+```bash
 python -m venv venv
+
 venv\Scripts\activate
 ```
 
-3. Instalar dependencias:
+---
 
-```
-pip install openai
-```
+## 3️⃣ Instalar dependencias
 
-4. Configurar API Key:
-
-```
-setx OPENAI_API_KEY "TU_API_KEY"
+```bash
+pip install -r requirements.txt
 ```
 
-5. Ejecutar:
+---
 
+## 4️⃣ Configurar variable de entorno
+
+```bash
+setx GITHUB_TOKEN "TU_TOKEN"
 ```
+
+---
+
+## 5️⃣ Importar base de datos
+
+Importar el archivo:
+
+```text
+esnupitosgo.sql
+```
+
+en MySQL Workbench.
+
+---
+
+# ▶️ Ejecutar proyecto
+
+```bash
 python main.py
 ```
 
 ---
 
-## ⚠️ Consideraciones
+# ⚠️ Consideraciones
 
-* El sistema depende de la API de OpenAI
-* Puede presentar limitaciones por cuota de uso
-* Las respuestas se generan únicamente con información del contexto
+- El sistema requiere conexión a internet.
+
+- Utiliza GitHub Models para acceder al modelo GPT-4o-mini.
+
+- La memoria implementada corresponde a memoria conversacional de corto plazo.
+
+- Las respuestas dependen de la información almacenada en la base de datos.
 
 ---
 
-## 📌 Autor
+# 👩‍💻 Autor
 
-Camila Hernández – Ingeniería en Informática
+Camila Hernández  
+Ingeniería en Informática
