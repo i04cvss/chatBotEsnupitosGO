@@ -2,7 +2,7 @@
 
 ---
 
-## 📌 Descripción
+# 📌 Descripción
 
 Este proyecto consiste en el desarrollo de un agente inteligente basado en modelos de lenguaje (LLM), arquitectura RAG y el framework LangChain, aplicado al emprendimiento Esnupitos GO, dedicado a la importación de productos K-POP desde Asia hacia Chile.
 
@@ -10,7 +10,7 @@ El sistema permite automatizar consultas frecuentes de clientes mediante herrami
 
 ---
 
-## 🎯 Objetivo
+# 🎯 Objetivo
 
 Automatizar la atención de clientes mediante un agente capaz de:
 
@@ -21,38 +21,122 @@ Automatizar la atención de clientes mediante un agente capaz de:
 
 ---
 
-## 🧠 Tecnologías utilizadas
+# 🧠 Tecnologías utilizadas
 
-- Python
-- LangChain
-- MySQL
-- GPT-4o-mini
-- GitHub Models
-- Arquitectura RAG
-
----
-
-## ⚙️ Funcionamiento
-
-El sistema funciona mediante:
-
-1. Selección de una opción por parte del usuario.
-2. Interpretación de la consulta por el agente.
-3. Uso de tools especializadas según la consulta.
-4. Recuperación de información desde MySQL.
-5. Uso de memoria conversacional.
-6. Generación de respuesta mediante el modelo LLM.
+- Python  
+- LangChain  
+- MySQL  
+- GPT-4o-mini  
+- GitHub Models  
+- Arquitectura RAG  
 
 ---
 
-## 📂 Estructura del proyecto
+# ⚙️ Funcionamiento
+
+El sistema funciona mediante las siguientes etapas:
+
+1. El usuario selecciona una opción del menú.
+
+2. El agente interpreta la consulta realizada.
+
+3. Se selecciona automáticamente la herramienta adecuada.
+
+4. El sistema consulta información en MySQL.
+
+5. La memoria conversacional mantiene el contexto.
+
+6. El modelo genera una respuesta basada en los datos recuperados.
+
+---
+
+# 📂 Estructura del proyecto
 
 ```text
 chatBotGO/
-│
+
 ├── main.py
 ├── tools.py
 ├── db.py
 ├── esnupitosgo.sql
 ├── requirements.txt
+└── README.md
+```
+
+---
+
+# 🚀 Cómo ejecutar el proyecto
+
+## 1️⃣ Clonar repositorio
+
+```bash
+git clone <url-del-repo>
+
+cd chatBotGO
+```
+
+---
+
+## 2️⃣ Crear entorno virtual
+
+```bash
+python -m venv venv
+
+venv\Scripts\activate
+```
+
+---
+
+## 3️⃣ Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 4️⃣ Configurar variable de entorno
+
+```bash
+setx GITHUB_TOKEN "TU_TOKEN"
+```
+
+---
+
+## 5️⃣ Importar base de datos
+
+Importar el archivo:
+
+```text
+esnupitosgo.sql
+```
+
+en MySQL Workbench.
+
+---
+
+# ▶️ Ejecutar proyecto
+
+```bash
+python main.py
+```
+
+---
+
+# ⚠️ Consideraciones
+
+- El sistema requiere conexión a internet.
+
+- Utiliza GitHub Models para acceder al modelo GPT-4o-mini.
+
+- La memoria implementada corresponde a memoria conversacional de corto plazo.
+
+- Las respuestas dependen de la información almacenada en la base de datos.
+
+---
+
+# 👩‍💻 Autor
+
+Camila Hernández  
+Ingeniería en Informática
 └── README.md
