@@ -139,4 +139,3 @@ python main.py
 
 Camila Hernández  
 Ingeniería en Informática
-└── README.md
