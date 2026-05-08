@@ -1,49 +1,58 @@
-🤖 Esnupitos GO Chatbot
-📌 Descripción
-Este proyecto consiste en el desarrollo de un chatbot inteligente basado en modelos de lenguaje (LLM) y técnicas de recuperación aumentada (RAG), aplicado al emprendimiento Esnupitos GO, dedicado a la importación de productos K-POP desde Asia hacia Chile.
+# 🤖 Esnupitos GO Agent
 
-El sistema permite responder automáticamente consultas frecuentes de clientes, mejorando la eficiencia operativa y reduciendo los tiempos de respuesta.
+---
 
-🎯 Objetivo
-Automatizar la atención de clientes mediante un asistente virtual capaz de:
+## 📌 Descripción
 
-Responder preguntas frecuentes
-Informar estados de pedidos
-Entregar estimaciones de costos
-Indicar tiempos de entrega
-🧠 Tecnologías utilizadas
-Python
-OpenAI API
-Modelo LLM (GPT-4o-mini)
-Enfoque RAG (Retrieval-Augmented Generation)
-⚙️ Funcionamiento
+Este proyecto consiste en el desarrollo de un agente inteligente basado en modelos de lenguaje (LLM), arquitectura RAG y el framework LangChain, aplicado al emprendimiento Esnupitos GO, dedicado a la importación de productos K-POP desde Asia hacia Chile.
+
+El sistema permite automatizar consultas frecuentes de clientes mediante herramientas conectadas a una base de datos MySQL, mejorando la eficiencia operativa y reduciendo tiempos de respuesta.
+
+---
+
+## 🎯 Objetivo
+
+Automatizar la atención de clientes mediante un agente capaz de:
+
+- Consultar estados de pedidos.
+- Entregar costos de envío y aduana.
+- Responder preguntas frecuentes.
+- Mantener contexto conversacional durante la interacción.
+
+---
+
+## 🧠 Tecnologías utilizadas
+
+- Python
+- LangChain
+- MySQL
+- GPT-4o-mini
+- GitHub Models
+- Arquitectura RAG
+
+---
+
+## ⚙️ Funcionamiento
+
 El sistema funciona mediante:
 
-Selección de una opción por parte del usuario
-Generación de una consulta estructurada
-Uso de un contexto interno (datosGo.txt)
-Envío del prompt al modelo LLM
-Generación de respuesta basada en contexto (RAG)
-📂 Estructura del proyecto
-main.py: lógica principal del chatbot
-datosGo.txt: base de conocimiento del sistema
-venv/: entorno virtual (no incluido en repositorio)
-🚀 Cómo ejecutar el proyecto
-Clonar repositorio:
-git clone <url-del-repo>
-cd chatBotGO
-Crear entorno virtual:
-python -m venv venv
-venv\Scripts\activate
-Instalar dependencias:
-pip install openai
-Configurar API Key:
-setx OPENAI_API_KEY "TU_API_KEY"
-Ejecutar:
-python main.py
-⚠️ Consideraciones
-El sistema depende de la API de OpenAI
-Puede presentar limitaciones por cuota de uso
-Las respuestas se generan únicamente con información del contexto
-📌 Autor
-Camila Hernández – Ingeniería en Informática
+1. Selección de una opción por parte del usuario.
+2. Interpretación de la consulta por el agente.
+3. Uso de tools especializadas según la consulta.
+4. Recuperación de información desde MySQL.
+5. Uso de memoria conversacional.
+6. Generación de respuesta mediante el modelo LLM.
+
+---
+
+## 📂 Estructura del proyecto
+
+```text
+chatBotGO/
+│
+├── main.py
+├── tools.py
+├── db.py
+├── esnupitosgo.sql
+├── requirements.txt
+└── README.md
