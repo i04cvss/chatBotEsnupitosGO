@@ -9,7 +9,7 @@ import os
 
 # LLM
 llm = ChatOpenAI(
-    model="openai/gpt-4o-mini1",
+    model="openai/gpt-4o-mini",
     temperature=0,
     base_url="https://models.github.ai/inference",
     openai_api_key=os.environ.get("GITHUB_TOKEN")
@@ -42,7 +42,21 @@ agent = initialize_agent(
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     memory=memory,
-    verbose=True
+    verbose=True,
+    agent_kwargs={
+        "prefix": """
+Eres un asistente virtual del emprendimiento Esnupitos GO.
+
+Tu función es responder consultas de clientes utilizando únicamente la información obtenida desde las herramientas del sistema.
+
+Instrucciones:
+- No inventes información.
+- Responde de forma clara, breve y amigable.
+- Utiliza las herramientas disponibles para obtener información.
+- Si no existe información suficiente, responde:
+"No dispongo de esa información en este momento."
+"""
+    }
 )
 
 def mostrar_menu():
