@@ -1,0 +1,7 @@
+fecha,pregunta,respuesta,latencia,estado
+2026-06-23 04:43:56,donde está mi pedido,"Error code: 403 - {'error': {'code': 'no_access', 'message': 'No access to model: openai/gpt-4o-mini', 'details': 'No access to model: openai/gpt-4o-mini'}}",0,ERROR
+2026-06-23 04:50:00,Estado pedido BTS,Pedido en tránsito,1.2,OK
+2026-06-23 04:51:00,Costo álbum,15000 CLP,0.8,OK
+2026-06-23 04:52:00,Costo photocard,8000 CLP,0.9,OK
+2026-06-23 04:53:00,Tiempo de envío,15 días,1.1,OK
+2026-06-23 04:54:00,Método de pago,Transferencia bancaria,0.7,OK
